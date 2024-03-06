@@ -11,11 +11,10 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
-# 設置 Flask 應用的時區為臺灣
-app.config['TIMEZONE'] = 'Asia/Taipei'
 
-# 設置 logging 模組的時區
-logging.Formatter.converter = time.gmtime
+@app.route('/',methods=['GET'])
+def hello():
+    return 'Hello World!'
 
 @app.route('/load_json/<name>',methods=['GET'])
 def get_data(name):
